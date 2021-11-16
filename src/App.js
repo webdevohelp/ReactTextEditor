@@ -1,6 +1,5 @@
 import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
@@ -33,26 +32,14 @@ function App() {
     };
     return (
         <React.Fragment>
-            <BrowserRouter>
-                <Navbar
-                    title="Text Utils"
-                    mode={mode}
-                    handleMode={handleMode}
-                />
-                <Alert alert={alert} />
-                <Routes>
-                    <Route
-                        path=""
-                        element={
-                            <TextForm
-                                showAlert={showAlert}
-                                heading="Try TextUtils - word counter, character counter, remove extra spaces"
-                                mode={mode}
-                            />
-                        }
-                    />
-                </Routes>
-            </BrowserRouter>
+            <Navbar title="Text Utils" mode={mode} handleMode={handleMode} />
+            <Alert alert={alert} />
+
+            <TextForm
+                showAlert={showAlert}
+                heading="Try TextUtils - word counter, character counter, remove extra spaces"
+                mode={mode}
+            />
         </React.Fragment>
     );
 }

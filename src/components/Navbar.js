@@ -37,15 +37,6 @@ export default function Navbar(props) {
                                     Home
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link
-                                    className="nav-link active"
-                                    aria-current="page"
-                                    to="/about"
-                                >
-                                    {props.aboutText}
-                                </Link>
-                            </li>
                         </ul>
                         <form className="d-flex px-4">
                             <input

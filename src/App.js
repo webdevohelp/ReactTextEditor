@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import About from './components/About';
 import Alert from './components/Alert';
 
 function App() {
@@ -39,13 +38,9 @@ function App() {
                     title="Text Utils"
                     mode={mode}
                     handleMode={handleMode}
-                    aboutText="About Us"
                 />
                 <Alert alert={alert} />
                 <Routes>
-                    {/* <About />
-                    <TextForm /> */}
-                    <Route path="about" element={<About />} />
                     <Route
                         path=""
                         element={

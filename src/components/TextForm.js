@@ -24,6 +24,7 @@ function TextForm(props) {
 
     const handleCopy = () => {
         navigator.clipboard.writeText(text);
+        document.getSelection().removeAllRanges();
         props.showAlert('Text Copied!', 'success');
     };
 
@@ -74,34 +75,43 @@ function TextForm(props) {
                     ></textarea>
                 </div>
                 <button
-                    className="btn btn-primary mx-2"
+                    disabled={text.length === 0}
+                    className="btn btn-primary mx-2 my-2"
                     onClick={handleUpClick}
                 >
                     Convert to Uppercase
                 </button>
                 <button
-                    className="btn btn-primary mx-2"
+                    disabled={text.length === 0}
+                    className="btn btn-primary mx-2 my-2"
                     onClick={handleLowClick}
                 >
                     Convert to Lowercase
                 </button>
                 <button
-                    className="btn btn-danger mx-2"
+                    disabled={text.length === 0}
+                    className="btn btn-danger mx-2 my-2"
                     onClick={handleClearClick}
                 >
                     Clear
                 </button>
-                <button className="btn btn-primary mx-2" onClick={handleCopy}>
+                <button
+                    disabled={text.length === 0}
+                    className="btn btn-primary mx-2 my-2"
+                    onClick={handleCopy}
+                >
                     Copy Text
                 </button>
                 <button
-                    className="btn btn-primary mx-2"
+                    disabled={text.length === 0}
+                    className="btn btn-primary mx-2 my-2"
                     onClick={handleExtraSpaces}
                 >
                     Remove Extra Spaces
                 </button>
                 <button
-                    className="btn btn-primary mx-2"
+                    disabled={text.length === 0}
+                    className="btn btn-primary mx-2 my-2"
                     onClick={handleRemoveSpaces}
                 >
                     Remove All Spaces
@@ -117,11 +127,16 @@ function TextForm(props) {
             >
                 <h2>Summary:</h2>
                 <p>
-                    {text.split(' ').length} words and {text.length} characters.
+                    {
+                        text
+                            .split(/\s+/)
+                            .filter((element) => element.length !== 0).length
+                    }{' '}
+                    words and {text.length} characters.
                 </p>
                 <p>Read in {(1 / 125) * text.split(' ').length} minutes</p>
                 <h4>Preview:</h4>
-                <p>{text}</p>
+                <p>{text.length > 0 ? text : 'Nothing to preview'}</p>
             </div>
         </React.Fragment>
     );
